@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 	"time"
-  "strings"
+        "strings"
 )
 
 func GoStdTime()string{
@@ -105,3 +105,25 @@ func Greatest(arr []time.Time)(time.Time){
     }
     return temp;
 }
+
+
+type TimeSlice []time.Time
+
+func (s TimeSlice) Len() int {
+     return len(s) 
+ }
+
+func (s TimeSlice) Swap(i, j int) {
+     s[i], s[j] = s[j], s[i] 
+ }
+
+func (s TimeSlice) Less(i, j int) bool {
+    if s[i].IsZero() {
+        return false
+    }
+    if s[j].IsZero() {
+        return true
+    }
+    return s[i].Before(s[j])
+}
+

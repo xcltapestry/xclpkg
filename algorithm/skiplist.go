@@ -3,15 +3,15 @@ package algorithm
 //SkipList
 //author:Xiong Chuan Liang
 //date:2014-1-28
+//"github.com/xcltapestry/xclpkg/algorithm"
 
 import (
-	"fmt"
-	//"github.com/xclpkg/algorithm"
+	//"fmt"
 	"math/rand"
 )
 
 
-const SKIPLIST_MAXLEVEL = 8 //32
+const SKIPLIST_MAXLEVEL = 32 //8 
 const SKIPLIST_P = 4
 
 
@@ -83,23 +83,23 @@ func (skipList *SkipList) Random_level() int {
 
 func (skipList *SkipList) PrintSkipList() {
 
-	fmt.Println("\nSkipList-------------------------------------------")
+	//fmt.Println("\nSkipList-------------------------------------------")
 	for i := SKIPLIST_MAXLEVEL - 1; i >= 0; i-- {
 		
-		 fmt.Println("level:", i)
+		 //fmt.Println("level:", i)
 		 node := skipList.Header.Forward[i]
 		 for {
 		 	 if node.Value != nil {
-		 	 	fmt.Printf("%d ", node.Value.(int))
+		 	 	//fmt.Printf("%d ", node.Value.(int))
 		 	 	node = node.Forward[i]
 		 	 }else{
 		 	 	break;
 		 	 }
 		 }
-		 fmt.Println("\n--------------------------------------------------------")
+		 //fmt.Println("\n--------------------------------------------------------")
 	} //end for
 
-	fmt.Println("Current MaxLevel:", skipList.Level)
+	//fmt.Println("Current MaxLevel:", skipList.Level)
 }
 
 
@@ -108,15 +108,15 @@ func (skipList *SkipList) Search(key int) *Node {
 	node := skipList.Header
 	for i := skipList.Level - 1; i >= 0; i-- {
 
-		fmt.Println("\n Search() Level=", i)
+		//fmt.Println("\n Search() Level=", i)
 		for {
 			if node.Forward[i].Value == nil {
 				break
 			}
 
-			fmt.Printf("  %d ", node.Forward[i].Value)
+			//fmt.Printf("  %d ", node.Forward[i].Value)
 			if node.Forward[i].Value.(int) == key {
-				fmt.Println("\nFound level=", i, " key=", key)			
+				//fmt.Println("\nFound level=", i, " key=", key)			
 				return &node.Forward[i]
 			}
 
@@ -146,7 +146,7 @@ func (skipList *SkipList)Remove(key int) {
 			}
 
 			if node.Forward[i].Value.(int) == key {
-				fmt.Println("Remove() level=", i, " key=", key)			
+				//fmt.Println("Remove() level=", i, " key=", key)			
 				update[i] = node 
 				break
 			}

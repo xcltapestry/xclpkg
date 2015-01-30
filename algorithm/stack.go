@@ -20,8 +20,8 @@ func NewStack() *Stack {
 }
 
 
-func (stack *Stack)Push(Value ...interface{}){
-	stack.Element = append(stack.Element,Value...)	
+func (stack *Stack)Push(value ...interface{}){
+	stack.Element = append(stack.Element,value...)	
 }
 
 
@@ -35,7 +35,7 @@ func (stack *Stack)Pop()(err error){
 }
 
 //返回下一个元素
-func (stack *Stack)Top()(Value interface{}){
+func (stack *Stack)Top()(value interface{}){
 	if stack.Size() > 0 {
 		return stack.Element[stack.Size() - 1]
 	}
@@ -60,9 +60,9 @@ func (stack *Stack)Swap(other *Stack){
 }
 
 //修改指定索引的值
-func (stack *Stack)Set(idx int,Value interface{})(err error){
+func (stack *Stack)Set(idx int,value interface{})(err error){
 	if idx >= 0 && stack.Size() > 0 && stack.Size() > idx{
-		stack.Element[idx] = Value
+		stack.Element[idx] = value
 		return nil
 	}
 	return errors.New("Set失败!")

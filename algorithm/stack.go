@@ -75,11 +75,11 @@ func (stack *Stack)Size()(int){
 
 //是否为空
 func (stack *Stack)Empty()(bool){
-	if stack.Size() > 0 {
+	if stack.Element == nil || stack.Size() == 0 {
 		return true
 	}
 	return false
-}	
+}		
 
 //打印
 func (stack *Stack)Print(){

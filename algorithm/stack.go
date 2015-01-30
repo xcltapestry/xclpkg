@@ -19,19 +19,8 @@ func NewStack() *Stack {
 	return &Stack{}
 }
 
-
 func (stack *Stack)Push(value ...interface{}){
 	stack.Element = append(stack.Element,value...)	
-}
-
-
-//从Stack移除元素
-func (stack *Stack)Pop()(err error){
-	if stack.Size()> 0 {
-		stack.Element = stack.Element[:stack.Size() - 1]
-		return nil
-	}
-	return errors.New("Stack为空.") //read empty stack
 }
 
 //返回下一个元素
@@ -40,6 +29,15 @@ func (stack *Stack)Top()(value interface{}){
 		return stack.Element[stack.Size() - 1]
 	}
 	return nil //read empty stack
+}
+
+//返回下一个元素,并从Stack移除元素
+func (stack *Stack)Pop()(err error){
+	if stack.Size()> 0 {
+		stack.Element = stack.Element[:stack.Size() - 1]
+		return nil
+	}
+	return errors.New("Stack为空.") //read empty stack
 }
 
 //交换值
@@ -59,7 +57,7 @@ func (stack *Stack)Swap(other *Stack){
 	return 	
 }
 
-//修改指定索引的值
+//修改指定索引的元素
 func (stack *Stack)Set(idx int,value interface{})(err error){
 	if idx >= 0 && stack.Size() > 0 && stack.Size() > idx{
 		stack.Element[idx] = value
@@ -68,8 +66,16 @@ func (stack *Stack)Set(idx int,value interface{})(err error){
 	return errors.New("Set失败!")
 }
 
+//返回指定索引的元素
+func (stack *Stack)Peek(idx int)(value interface{}){
+	if idx >= 0 && stack.Size() > 0 && stack.Size() > idx {
+		return stack.Element[idx]
+	}
+	return nil //read empty stack
+}
+
 //Stack的size
-func (stack *Stack)Size()(int){
+func (stack *Stack)Size()(int){	
 	return len(stack.Element)
 }
 
@@ -79,7 +85,7 @@ func (stack *Stack)Empty()(bool){
 		return true
 	}
 	return false
-}		
+}	
 
 //打印
 func (stack *Stack)Print(){

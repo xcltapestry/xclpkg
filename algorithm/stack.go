@@ -67,7 +67,7 @@ func (stack *Stack)Set(idx int,value interface{})(err error){
 }
 
 //返回指定索引的元素
-func (stack *Stack)Peek(idx int)(value interface{}){
+func (stack *Stack)Get(idx int)(value interface{}){
 	if idx >= 0 && stack.Size() > 0 && stack.Size() > idx {
 		return stack.Element[idx]
 	}
